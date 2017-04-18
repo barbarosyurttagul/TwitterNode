@@ -12,13 +12,14 @@ var stream = T.stream('user')
 stream.on('follow', followed)
 
 function followed(eventMsg) {
-    console.log('Follow event')
+    console.log(eventMsg)
     var name = eventMsg.source.name
     var screen_name = eventMsg.source.screen_name
-    tweetIt('.@' + screen_name + ' takip için teşekkürler')
+    if (eventMsg.source.id_str !== '269203243') {
+        tweetIt('.@' + screen_name + ' takip için teşekkürler. Node.js ile hazırladığım otomatik bir tweettir.')
+    }
+    
 }
-
-
 
 function tweetIt(txt) {
     
